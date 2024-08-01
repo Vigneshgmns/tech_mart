@@ -162,7 +162,7 @@ const partnerData=[
 export const Footer = () => {
   return (
   <>
-    <div className="px-[200px] flex gap-[100px] py-[80px]">
+    <div className="px-[200px] flex  gap-[100px] py-[80px] bg-white">
       <div>
         <p className="text-[18px] font-bold">Swoo - 1st NYC tech online market</p>
         <div>
@@ -206,9 +206,8 @@ export const Footer = () => {
             <p className="mt-3 text-[#666666] text-[13px]">By subscribing, you’re accepted the our <a href="#" className=" underline font-bold text-[black] ">Policy</a></p>
       </div>
       </div>
-    </div>
-
-    <div className="px-[200px] border-t border-[#EBEEF6] py-[30px]">
+    </div> 
+    <div className="px-[200px] border-t border-[#EBEEF6] py-[10px] bg-white">
         <div className="flex gap-4 items-center  justify-between">
         <p className="text-[#666666] text-[14px] mt-[30px] flex gap-1">© 2024 <p className="font-bold text-[black]">Shawonetc3</p>.All Rights Reserved</p>
         <div className="flex gap-[20px] mt-[30px]">
@@ -222,6 +221,7 @@ export const Footer = () => {
         </div>
     </div>
     
+
   </>
   )
 }

@@ -3,8 +3,8 @@ import React from 'react'
 const Navbar = () => {
   return (
     <>
-    <div className='px-[30px] py-[15px] cursor-pointer'>
-
+    <div className='px-[30px] py-[15px] cursor-pointer bg-[#fff] p-[10px] rounded-2xl'>
+        
        <div className='flex justify-between items-center'>
         <div className='flex gap-[30px] items-center'>
             <p className='bg-[#EBEEF6] text-[14px] pl-[30px] pr-[10px] py-[10px] rounded-md'>Hotline 24/7</p>
@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
         </div>
 
-        <div className='mt-[25px] flex justify-between'>
+        <div className='mt-[25px] flex justify-between bg-[#fff] p-[10px] rounded-2xl'>
             <div className='flex gap-[80px] items-center'>
                 <div>
                     <img src="/icons/logo.svg" alt="logo" />
@@ -63,9 +63,25 @@ const Navbar = () => {
                      </div>
                  </div>
             </div>
+    
+
+      </div>
+    </div> 
+    <div className='bg-[#1ABA1A]  py-[20px] px-[15px] rounded-2xl flex gap-32'>
+            <div className='flex gap-[35px] items-center bg-[#fff] rounded-3xl py-[8px] px-[30px]'>
+                <select >
+                    <option>All Categories</option>
+                </select>
+                <input type="text" placeholder='Search anything....'/>
+                <img src="/icons/search.svg" alt="search" />
+            </div>
+           <div className='flex gap-28 items-center'>
+               <p className='text-[#fff] uppercase text-[13px]'>free shipping over $199</p>
+               <p className='text-[#fff] uppercase text-[13px]'>30 days money back</p>
+               <p className='text-[#fff] uppercase text-[13px]'>100% secure payment</p>
+           </div>
         </div>
        
-       </div> 
     </>
   )
 }
