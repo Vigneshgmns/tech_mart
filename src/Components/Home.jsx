@@ -3,43 +3,43 @@ import { Banner } from './Banner'
 import AppContext from './AppContext'
 import { BrandsCategorie } from './BrandsCategorie'
 
-const brandData=[
+const brandData = [
   {
-    image:'/icons/jawk.svg'
-  },{
-    image:'/icons/digitek.svg'
-  },{
-    image:'/icons/tek.svg'
-  },{
-    image:'/icons/grafbase.svg'
-  },{
-    image:'/icons/msi.svg'
-  },{
-    image:'/icons/bear.svg'
-  },{
-    image:'/icons/oak.svg'
-  },{
-    image:'/icons/snyk.svg'
-  },{
-    image:'/icons/sonex.svg'
-  },{
-    image:'/icons/stropi.svg'
+    image: '/icons/jawk.svg'
+  }, {
+    image: '/icons/digitek.svg'
+  }, {
+    image: '/icons/tek.svg'
+  }, {
+    image: '/icons/grafbase.svg'
+  }, {
+    image: '/icons/msi.svg'
+  }, {
+    image: '/icons/bear.svg'
+  }, {
+    image: '/icons/oak.svg'
+  }, {
+    image: '/icons/snyk.svg'
+  }, {
+    image: '/icons/sonex.svg'
+  }, {
+    image: '/icons/stropi.svg'
   }
 ]
 
-const categoryData=[
+const categoryData = [
   {
-    image:'/images/laptop.svg',
-    title:'laptop'
-  },{
-    image:'/images/pc.svg',
-    title:'PC gaming'
-  },{
-    image:'/images/headphones.svg',
-    title:'headphone'
-  },{
-    image:'/images/cpu.svg',
-    title:'monitor'
+    image: '/images/laptop.svg',
+    title: 'laptop'
+  }, {
+    image: '/images/pc.svg',
+    title: 'PC gaming'
+  }, {
+    image: '/images/headphones.svg',
+    title: 'headphone'
+  }, {
+    image: '/images/cpu.svg',
+    title: 'monitor'
   }
 ]
 
@@ -49,11 +49,11 @@ const categoryData=[
 const Home = () => {
   return (
     <>
-     <Banner/>
-     <AppContext className='flex gap-[16px] '>
-      <BrandsCategorie title={"featured brands"} data={brandData}/>
-      <BrandsCategorie title={"top categories"} data={categoryData}/>
-    </AppContext> 
+      <Banner />
+      <AppContext className='flex gap-[16px] '>
+        <BrandsCategorie title={"featured brands"} data={brandData} />
+        <BrandsCategorie title={"top categories"} data={categoryData} />
+      </AppContext>
     </>
   )
 }
