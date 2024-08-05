@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 import Slider from './Slider'
 
 export const Deals = () => {
-    const [time, setTime] = useState(new Date())
+    // const [time, setTime] = useState(new Date())
     //     useEffect(() => {
     //         setInterval(() => setTime(new Date()),10000  )
     //     }, [])
@@ -38,8 +38,6 @@ export const Deals = () => {
                                 <p className='text-[13px] font-medium uppercase'>hurry up!
                                     Promotion will
                                     expires in</p>
-                                <p>{time.toLocaleTimeString}</p>
-                                <div></div>
                             </div>
                         </div>
                     </div>
