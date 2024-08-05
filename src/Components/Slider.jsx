@@ -1,0 +1,101 @@
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
+
+const carouselPhotos = [
+    {
+        thumbnail: "/images/keen_1.png",
+        src: "/images/main_1.png",
+        alt: "Test alt 1",
+    },
+    {
+        thumbnail: "/images/keen_2.png",
+        src: "/images/keen_2.png",
+        alt: "Test alt 2",
+    },
+    {
+        thumbnail: "/images/keen_3.png",
+        src: "/images/keen_3.png",
+        alt: "Test alt 3",
+    }, {
+        thumbnail: "/images/keen_4.png",
+        src: "/images/main_4.png",
+        alt: "Test alt 4",
+    }
+];
+
+function ThumbnailPlugin(mainRef) {
+    return (slider) => {
+        function removeActive() {
+            slider.slides.forEach((slide) => {
+                slide.classList.remove("active");
+            });
+        }
+        function addActive(idx) {
+            slider.slides[idx].classList.add("active");
+        }
+
+        function addClickEvents() {
+            slider.slides.forEach((slide, idx) => {
+                slide.addEventListener("click", () => {
+                    if (mainRef.current) mainRef.current.moveToIdx(idx);
+                });
+            });
+        }
+
+        slider.on("created", () => {
+            if (!mainRef.current) return;
+            addActive(slider.track.details.rel);
+            addClickEvents();
+            mainRef.current.on("animationStarted", (main) => {
+                removeActive();
+                const next = main.animator.targetIdx || 0;
+                addActive(main.track.absToRel(next));
+                slider.moveToIdx(Math.min(slider.track.details.maxIdx, next));
+            });
+        });
+    };
+}
+
+export default function Slider() {
+    const [sliderRef, instanceRef] = useKeenSlider({
+        initial: 1,
+        slides: {
+            perView: 1
+        }
+
+    });
+    const [thumbnailRef] = useKeenSlider(
+        {
+            slides: {
+                perView: 4,
+                spacing: 10,
+            },
+        },
+        [ThumbnailPlugin(instanceRef)]
+    );
+    return (
+        <div className="flex flex-col gap-8 items-center pl-10">
+            <div ref={sliderRef} className="keen-slider max-w-[200px]  max-h-[330px]">
+                {carouselPhotos.map((i, ind) => (
+                    <img
+                        src={i.src}
+                        alt={i.alt}
+                        className={`keen-slider__slide number-slide${ind + 1}`}
+                        key={ind}
+                    />
+                ))}
+            </div>
+
+            <div ref={thumbnailRef} className="keen-slider  max-w-[200px] max-h-[200px]">
+                {carouselPhotos.map((i, ind) => (
+                    <img
+                        src={i.thumbnail}
+                        alt={i.alt}
+                        className={`keen-slider__slide number-slide${ind + 1}`}
+                        key={ind}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
