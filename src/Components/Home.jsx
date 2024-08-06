@@ -4,6 +4,7 @@ import AppContext from './AppContext'
 import { BrandsCategorie } from './BrandsCategorie'
 import { Deals } from './Deals'
 import { Card } from './Card'
+import { NewBrands } from './NewBrands'
 
 const brandData = [
   {
@@ -96,6 +97,8 @@ const cardData = [
 
 
 
+
+
 const Home = () => {
   const [head, setHade] = useState('best')
   return (
@@ -145,6 +148,9 @@ const Home = () => {
             />
           ))}
         </div>
+      </AppContext>
+      <AppContext className='bg-[#fff] mt-4 py-20 px-9 rounded-xl'>
+       <NewBrands/>
       </AppContext>
     </>
   )

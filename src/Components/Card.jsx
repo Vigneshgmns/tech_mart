@@ -12,6 +12,7 @@ export const Card = ({
     isInStock,
 }) => {
     return (
+        <>
         <div className="max-w-[250px] flex flex-col gap-[10px]">
             <img src={img} alt="" />
             {quantity && <p className="m-0">{quantity}</p>}
@@ -50,5 +51,8 @@ export const Card = ({
                 </div>
             )}
         </div>
+        
+        </>
+        
     );
 };
