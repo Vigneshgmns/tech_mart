@@ -1,4 +1,4 @@
-import { data } from "autoprefixer"
+
 
 const brandsData = [
     {
@@ -25,19 +25,17 @@ const brandsData = [
 
 export const NewBrands = () => {
     return (
-        <div>
-            <div className="flex items-center gap-4">
+        <div className="flex gap-4">
                 {
                     brandsData.map((item, ind) => (
-                        <div className="flex flex-col gap-3 max-w-[302px] max-h-[230px]">
-                            <img src={item.img} alt="" className="rounded-md" />
+                        <div className="max-w-[302px] flex flex-col gap-[10px]">
+                            <img src={item.img} alt="" className="rounded-md" width={300} />
                             <p className="text-[16px] font-bold">{item.title}</p>
                             <p className="text-[#666] text-xs">{item.desp}</p>
                             <p className="text-[#1ABA1A] uppercase bg-white rounded-xl px-[30px] py-[10px]">shop now</p>
                         </div>
                     ))
                 }
-            </div>
         </div>
     )
 }

@@ -5,6 +5,7 @@ import { BrandsCategorie } from './BrandsCategorie'
 import { Deals } from './Deals'
 import { Card } from './Card'
 import { NewBrands } from './NewBrands'
+import { useNavigate } from 'react-router'
 
 const brandData = [
   {
@@ -56,6 +57,8 @@ const cardData = [
     isFreeShipping: true,
     isFreeGift: true,
     isInStock: true,
+    category:'best',
+    id:1,
   }, {
     img: "/images/tab.png",
     title: "OPod Pro 12.9 Inch M1 2023,64GB + Wifi, GPS",
@@ -65,6 +68,8 @@ const cardData = [
     isFreeShipping: true,
     isFreeGift: true,
     isInStock: true,
+    category:'best',
+    id:2,
   }, {
     img: "/images/wifi.png",
     title: "uLosk Mini case 2.0, Xenon i10 / 32GB / SSD 512GB /VGA 8GB",
@@ -74,6 +79,8 @@ const cardData = [
     isFreeShipping: true,
     isFreeGift: true,
     isInStock: false,
+    category:'best',
+    id:3,
   }, {
     img: "/images/watch.png",
     title: "Opplo Watch Series 8 GPS +Cellular Stainless Steel Case with Milanese Loop",
@@ -82,6 +89,8 @@ const cardData = [
     isFreeShipping: false,
     isFreeGift: false,
     isInStock: false,
+    category:'best',
+    id:4,
   }, {
     img: "/images/charge.png",
     title: "iSmart 24V Charger",
@@ -91,16 +100,80 @@ const cardData = [
     isFreeShipping: false,
     isFreeGift: false,
     isInStock: false,
-  },
+    category:'best',
+    id:5,
+  },{
+    img: "/images/watch.png",
+    title: "Opplo Watch Series 8 GPS +Cellular Stainless Steel Case with Milanese Loop",
+    quantity: "",
+    priceRange: "$959.00 - $1,678.99",
+    isFreeShipping: false,
+    isFreeGift: false,
+    isInStock: false,
+    category:'new',
+    id:6,
+  },{
+    img: "/images/charge.png",
+    title: "iSmart 24V Charger",
+    quantity: "(9)",
+    actualPrice: "$9.00",
+    discountedPrice: '$22.00',
+    isFreeShipping: false,
+    isFreeGift: false,
+    isInStock: false,
+    category:'new',
+    id:7,
+  },{
+    img: "/images/wifi.png",
+    title: "uLosk Mini case 2.0, Xenon i10 / 32GB / SSD 512GB /VGA 8GB",
+    quantity: "(8)",
+    actualPrice: "$1,259.00",
+    discountedPrice: '$2,200.00',
+    isFreeShipping: true,
+    isFreeGift: true,
+    isInStock: false,
+    category:'new',
+    id:8,
+  },{
+    img: "/images/tab.png",
+    title: "BOSO 2 Wireless On Ear Headphone",
+    quantity: "(152)",
+    originalPrice: "$359.00",
+    isFreeShipping: true,
+    isFreeGift: true,
+    isInStock: true,
+    category:'popular',
+    id:9,
+  },{
+    img: "/images/heads.png",
+    title: "OPod Pro 12.9 Inch M1 2023,64GB + Wifi, GPS",
+    quantity: "(152)",
+    actualPrice: "$598.00",
+    discountedPrice: '$720.00',
+    isFreeShipping: true,
+    isFreeGift: true,
+    isInStock: true,
+    category:'popular',
+    id:10,
+  }
 ]
 
 
-
-
-
-
 const Home = () => {
-  const [head, setHade] = useState('best')
+
+  const [head, setHade] = useState("best");
+  const navigate = useNavigate();
+
+  const filterData = (category) => {
+    return cardData.filter((item) => item.category === category);
+  };
+
+  const bestData = filterData("best");
+  const newData = filterData("new");
+  const popularData = filterData("popular");
+
+
+
   return (
     <>
       <Banner />
@@ -132,7 +205,12 @@ const Home = () => {
           </div>
         </div>
         <div className="flex gap-[20px] items-center">
-          {cardData.map((i, ind) => (
+          {(head === "best"
+            ? bestData
+            : head === "new"
+            ? newData
+            : popularData
+          ).map((i, ind) => (
             <Card
               key={ind}
               img={i.img}
@@ -145,12 +223,36 @@ const Home = () => {
               priceRange={i.priceRange}
               actualPrice={i.actualPrice}
               discountedPrice={i.discountedPrice}
+              handleclick={() => navigate(`/product/${i.id}`)}
             />
           ))}
         </div>
       </AppContext>
-      <AppContext className='bg-[#fff] mt-4 py-20 px-9 rounded-xl'>
-       <NewBrands/>
+      <AppContext className='bg-[#fff] mt-4 py-[90px] px-[30px] rounded-xl'>
+        <NewBrands />
+      </AppContext>
+
+
+
+      <AppContext>
+      <div className='mt-12 mb-11'>
+         
+         <h3 className='text-[18px] font-bold mb-5'>Swoo – #1 Online Marketplace for technology</h3>
+
+          <p className='mb-6 text-[14px] text-[#666666] leading-6'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae posuere mi. Quisque iaculis dignissim scelerisque. Morbi condimentum sagittis leo vitae tempor.Suspendisse in dolor odio. Sed aliquet ac lacus ut luctus. Fusce mattis sollicitudin sem, id lobortis nibh ullamcorper a. Donec vehicula dolor et arcu consequat mattis.
+            Fusce mattis nec nulla in scelerisque.
+            </p>
+
+          <p className='mb-6 text-[14px] text-[#666666] font-normal leading-6'>
+            Morbi pharetra sem mauris, nec aliquet ipsum vestibulum suscipit. Curabitur non euismod dui. Proin eget justo eu erat luctus placerat. Nam rhoncus ipsum ac enim faucibus, at consequat
+            ante maximus. Vestibulum at nibh ac odio ultrices varius. Duis vitae libero mollis, lobortis ligula id, varius erat. Sed id odio dictum, laoreet enim ac, commodo magna. Praesent sodales porttitor
+            maximus. Sed a lacus felis. Maecenas consectetur consequat orci scelerisque malesuada. Fusce vel orci eu tortor consequat mattis quis at ante. Class aptent taciti sociosqu ad litora
+            torquent per conubi,
+            </p>
+
+            <p className='text-[13px] '>Viwe All</p>
+        </div>
       </AppContext>
     </>
   )
